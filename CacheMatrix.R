@@ -14,3 +14,19 @@ makeCacheMatrix <- function(x = matrix()) {
        getinverse=getinverse)
   
 }
+
+
+#Function to Cache Inverse of matrix
+cacheSolve <- function(x, ...) {
+  minv <- x$getinverse()
+  if (is.null(minv)) {
+    message("Newly Cached Inverse Data")
+    data <- x$get()
+    minv <- solve(data, ...)
+    x$setinverse(minv)
+  } else {
+    message("Existing Cached Inverse data")
+  }
+  minv   # or return(minv)
+}
+
